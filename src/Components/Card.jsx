@@ -53,7 +53,6 @@ export default function Card({
     }
 
     setCardArray(shuffleCards(cardArray));
-    // console.log(cardArray);
   };
   return (
     <>
