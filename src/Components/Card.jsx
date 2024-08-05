@@ -5,8 +5,11 @@ export default function Card({
   setSelected,
   selected,
   cardArray,
+  setCardArray,
   score,
   setScore,
+  msg,
+  setMsg,
 }) {
   function shuffleCards(cards) {
     let shuffledCards = cards.slice();
@@ -22,6 +25,9 @@ export default function Card({
     return shuffledCards;
   }
   const handleClick = (e) => {
+    if (msg !== "") {
+      setMsg("");
+    }
     let same = false;
     if (selected.length === 0) {
       console.log("0 length");
@@ -38,6 +44,7 @@ export default function Card({
       if (same) {
         setSelected([]);
         setScore(0);
+        setMsg("Oh no! Better luck next time. Don't give up!");
       } else {
         console.log("Change id");
         setScore(score + 1);
@@ -45,7 +52,7 @@ export default function Card({
       }
     }
 
-    cardArray = shuffleCards(cardArray);
+    setCardArray(shuffleCards(cardArray));
     // console.log(cardArray);
   };
   return (
